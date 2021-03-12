@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:intf="http://176.236.6.140:8080/CaniasWS-v1/services/iasWebService" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:impl="http://176.236.6.140:8080/CaniasWS-v1/services/iasWebService" targetNamespace="http://176.236.6.140:8080/CaniasWS-v1/services/iasWebService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://176.236.6.140:8080/CaniasWS-v1/services/iasWebService">
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <xsd:complexType name="ArrayOf_xsd_string">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="soapenc:Array">
+            <xsd:attribute wsdl:arrayType="xsd:string[]" ref="soapenc:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="callIASServiceRequest">
+    <wsdl:part name="sessionid" type="xsd:string" />
+    <wsdl:part name="serviceid" type="xsd:string" />
+    <wsdl:part name="args" type="xsd:string" />
+    <wsdl:part name="returntype" type="xsd:string" />
+    <wsdl:part name="permanent" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="listIASServicesRequest">
+    <wsdl:part name="p_strSessionId" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="loginResponse">
+    <wsdl:part name="loginReturn" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="logoutResponse" />
+  <wsdl:message name="loginRequest">
+    <wsdl:part name="p_strClient" type="xsd:string" />
+    <wsdl:part name="p_strLanguage" type="xsd:string" />
+    <wsdl:part name="p_strDBName" type="xsd:string" />
+    <wsdl:part name="p_strDBServer" type="xsd:string" />
+    <wsdl:part name="p_strAppServer" type="xsd:string" />
+    <wsdl:part name="p_strUserName" type="xsd:string" />
+    <wsdl:part name="p_strPassword" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="logoutRequest">
+    <wsdl:part name="p_strSessionId" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="callIASServiceResponse">
+    <wsdl:part name="callIASServiceReturn" type="xsd:anyType" />
+  </wsdl:message>
+  <wsdl:message name="listIASServicesResponse">
+    <wsdl:part name="listIASServicesReturn" type="impl:ArrayOf_xsd_string" />
+  </wsdl:message>
+  <wsdl:portType name="iasWebServiceImpl">
+    <wsdl:operation name="login" parameterOrder="p_strClient p_strLanguage p_strDBName p_strDBServer p_strAppServer p_strUserName p_strPassword">
+      <wsdl:input name="loginRequest" message="impl:loginRequest" />
+      <wsdl:output name="loginResponse" message="impl:loginResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="logout" parameterOrder="p_strSessionId">
+      <wsdl:input name="logoutRequest" message="impl:logoutRequest" />
+      <wsdl:output name="logoutResponse" message="impl:logoutResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="callIASService" parameterOrder="sessionid serviceid args returntype permanent">
+      <wsdl:input name="callIASServiceRequest" message="impl:callIASServiceRequest" />
+      <wsdl:output name="callIASServiceResponse" message="impl:callIASServiceResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="listIASServices" parameterOrder="p_strSessionId">
+      <wsdl:input name="listIASServicesRequest" message="impl:listIASServicesRequest" />
+      <wsdl:output name="listIASServicesResponse" message="impl:listIASServicesResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="iasWebServiceSoapBinding" type="impl:iasWebServiceImpl">
+    <wsdlsoap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="login">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="loginRequest">
+        <wsdlsoap:body use="encoded" namespace="http://web.ias.com" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="loginResponse">
+        <wsdlsoap:body use="encoded" namespace="http://176.236.6.140:8080/CaniasWS-v1/services/iasWebService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="logout">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="logoutRequest">
+        <wsdlsoap:body use="encoded" namespace="http://web.ias.com" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="logoutResponse">
+        <wsdlsoap:body use="encoded" namespace="http://176.236.6.140:8080/CaniasWS-v1/services/iasWebService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="callIASService">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="callIASServiceRequest">
+        <wsdlsoap:body use="encoded" namespace="http://web.ias.com" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="callIASServiceResponse">
+        <wsdlsoap:body use="encoded" namespace="http://176.236.6.140:8080/CaniasWS-v1/services/iasWebService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listIASServices">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="listIASServicesRequest">
+        <wsdlsoap:body use="encoded" namespace="http://web.ias.com" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="listIASServicesResponse">
+        <wsdlsoap:body use="encoded" namespace="http://176.236.6.140:8080/CaniasWS-v1/services/iasWebService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="iasWebServiceImplService">
+    <wsdl:port name="iasWebService" binding="impl:iasWebServiceSoapBinding">
+      <wsdlsoap:address location="http://176.236.6.140:8080/CaniasWS-v1/services/iasWebService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

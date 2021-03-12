@@ -1,0 +1,40 @@
+
+@font-face {
+    font-family: "SFUIText_SB";
+    src: url("../fonts/SF-UI-Text-Semibold.otf");
+}
+
+@font-face {
+    font-family: "SFUIText_B";
+    src: url("fonts/SF-UI-Text-Bold.otf");
+}
+
+@font-face {
+    font-family: "SFUIText_MD";
+    src: url("../fonts/SF-UI-Text-Medium.otf");
+}
+
+@font-face {
+    font-family: "SFUIText_RG";
+    src: url("../fonts/SF-UI-Text-Regular.otf");
+}
+
+@font-face {
+    font-family: "SFUIText_SB";
+    src: url("../fonts/SF-UI-Text-Semibold.otf");
+}
+
+@font-face {
+    font-family: "AlmostaHero-Ult";
+    src: url("../fonts/AlmostaHero-Ult.ttf");
+}
+body {
+    font-family: "SFUIText_RG";
+    padding: 0px;
+    margin: 0px;
+}
+
+a:hover, a:active {
+    color: #fbc125;
+    text-decoration: none;
+}

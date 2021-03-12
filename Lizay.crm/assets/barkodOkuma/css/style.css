@@ -1,0 +1,104 @@
+
+.form-signin {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+.shadow{
+-webkit-box-shadow: 0px 0px 11px 1px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 0px 11px 1px rgba(0,0,0,0.75);
+box-shadow: 0px 0px 11px 1px rgba(0,0,0,0.75);
+}
+
+
+
+.sag{
+
+    float:left; margin-left:10px;font-size: 18px;
+
+}
+
+.sol{
+
+    font-weight:bold; float:left;font-size: 18px;
+
+}
+
+.urunlistsag{
+float:left; margin-left:10px;font-size: 16px;
+}
+.urunlistsol{
+font-weight:bold; float:left;font-size: 16px;
+}
+
+.kutucuk2{
+       width: 30px; height: 30px;
+}
+.text2{
+      font-size: 30px;
+      margin-left:20px;
+}
+
+
+.sag1{
+float:left; margin-left:10px;font-size: 15px;
+}
+.sol1{
+font-weight:bold; float:left;font-size: 15px;
+}
+.p10{
+padding-top:35px;
+padding-bottom:35px;
+}
+.cizgi{
+margin-top: 0;border-top: 1px solid #ddd;
+}
+.urunkodu{
+  font-size: 16px;
+}
+.urunadi {
+    font-size: 15px;
+    margin: 2px 0 20px 0;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+.fotog{
+width: 115px;
+}
+.fotoga{
+width:454px;
+}
+ @media (max-width: 767px){
+.fotoga{
+width:380px;
+} }
+.ortala
+{
+margin-left:auto;
+margin-right:auto;
+}
+.borderr{
+padding: 15px;
+    border: 1px solid #e6e6e6;
+}
+.magazalar a{
+    font-size: 14px;
+    display: block;
+    float: left;
+    line-height: 15px;
+    color: #000;
+}  
+
+.magazalar a:hover{
+    color: #4a4a4a;
+}
+.p15{
+   padding-top:15px;
+padding-bottom:15px;
+}
+.phone{
+ color: #000;
+}
+.ustucizik{
+text-decoration: line-through;
+}

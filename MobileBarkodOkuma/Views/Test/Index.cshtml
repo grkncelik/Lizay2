@@ -1,0 +1,100 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>QuaggaJS, an advanced barcode-reader written in JavaScript</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="copyright" content="This project is maintained by Christoph Oberhofer" />
+    <meta name="description" content="QuaggaJS is an advanced barcode-reader written in JavaScript" />
+    <meta name="keywords" content="barcode, javascript, canvas, computer vision, image processing, ean, code128" />
+    <meta name="robots" content="index,follow" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+</head>
+<body>
+    <div class="wrapper">
+
+        <section>
+            <section id="container" class="container">
+                <div class="controls">
+                    <fieldset class="input-group">
+                        <input type="file" accept="image/*;capture=camera" />
+                        @*<button>Rerun</button>*@
+                    </fieldset>
+                    <fieldset class="reader-config-group" style="display: none">
+                        <label>
+                            <span>Barcode-Type</span>
+                            <select name="decoder_readers">
+                                @*<option value="code_128" >Code 128</option>*@
+                                <option value="code_39" selected="selected">Code 39</option>
+                                @*<option value="code_39_vin">Code 39 VIN</option>
+                                    <option value="ean">EAN</option>
+                                    <option value="ean_extended">EAN-extended</option>
+                                    <option value="ean_8">EAN-8</option>
+                                    <option value="upc">UPC</option>
+                                    <option value="upc_e">UPC-E</option>
+                                    <option value="codabar">Codabar</option>
+                                    <option value="i2of5">ITF</option>
+                                    <option value="2of5">Standard 2 of 5</option>
+                                    <option value="code_93">Code 93</option>*@
+                            </select>
+                        </label>
+                        <label>
+                            <span>Resolution (long side)</span>
+                            <select name="input-stream_size">
+                                @*<option value="320">320px</option>
+                                    <option value="640">640px</option>
+                                    <option  value="800">800px</option>*@
+                                <option selected="selected" value="1280">1280px</option>
+                                @*<option value="1600">1600px</option>
+                                    <option value="1920">1920px</option>*@
+                            </select>
+                        </label>
+                        <label>
+                            <span>Patch-Size</span>
+                            <select name="locator_patch-size">
+                                @*<option value="x-small">x-small</option>
+                                    <option value="small">small</option>*@
+                                <option selected="selected" value="medium">medium</option>
+                                @*<option value="large">large</option>
+                                    <option value="x-large">x-large</option>*@
+                            </select>
+                        </label>
+                        <label>
+                            <span>Half-Sample</span>
+                            <input type="checkbox" name="locator_half-sample" />
+                        </label>
+                        <label>
+                            <span>Workers</span>
+                            <select name="numOfWorkers">
+                                @*<option value="0">0</option>*@
+                                <option value="1" selected="selected">1</option>
+                                @*<option value="2">2</option>
+                                    <option value="4">4</option>
+                                    <option value="8">8</option>*@
+                            </select>
+                        </label>
+                    </fieldset>
+                </div>
+                <div id="result_strip">
+                    <ul class="thumbnails"></ul>
+                </div>
+                @*<div id="interactive" class="viewport"></div>*@
+            </section>
+            <script src="~/assets/js/jquery-1.11.0.min.js"></script>
+            <script src="~/assets/js/quagga.min.js"></script>
+            <script src="~/assets/js/file_input.js"></script>
+        </section>
+
+    </div>
+    @*<script src="https://serratus.github.io/quaggaJS/javascripts/scale.fix.js"></script>*@
+    @*<script src="~/assets/js/scale.fix.js"></script>*@
+</body>
+</html>

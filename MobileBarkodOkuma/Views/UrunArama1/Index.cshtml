@@ -1,0 +1,163 @@
+﻿@model List<MobileBarkodOkuma.Models.BarcodeViewModel>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ürün Ekranı</title>
+    <link href="~/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/assets/css/carousel.css" rel="stylesheet" />
+    <link href="~/assets/css/style.css" rel="stylesheet" />
+    <link href="~/assets/css/font-awasome.css" rel="stylesheet" />
+    <link href="~/assets/css/fonts.css" rel="stylesheet" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <style>
+
+        .responsive {
+            padding-top: 80px;
+            width: 100%;
+            height: auto;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container" style="margin-bottom:30px;">
+        <div class="row">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4">
+                <img src="data:image/png;base64,@Model.FirstOrDefault(model => model.IsTp=="1").Picture.Replace("-----BEGIN CERTIFICATE-----", "").Replace("-----END CERTIFICATE-----", "")" class="img-responsive shadow" alt="" />
+            </div>
+            <div class="col-lg-4"></div>
+        </div>
+        <div class="row" style="margin-top:20px;">
+            <div class="col-lg-6 col-xs-12" style="margin-top: 15px;">
+                <div class="sol"> Taş:</div><p class="sag"> @Model.FirstOrDefault(model => model.IsTp == "1").IsMatText</p>
+            </div>
+            <div class="col-lg-6 col-xs-12" style="margin-top: 15px;">
+                <div class="sol"> Taş Özellikleri:</div><p class="sag">  @Model.FirstOrDefault(model => model.IsTp == "1").IsTasDet</p>
+            </div>
+            <div class="col-lg-6 col-xs-12" style="margin-top: 15px;">
+                <div class="sol"> Montür:</div><p class="sag"> @Model.FirstOrDefault(model => model.IsTp == "1").DetColor</p>
+            </div>
+            <div class="col-lg-6 col-xs-12" style="margin-top: 15px;">
+                <div class="sol"> Ağırlık:</div><p class="sag">  @Model.FirstOrDefault(model => model.IsTp == "1").QuantityX gr</p>
+            </div>
+            <div class="col-lg-6 col-xs-12" style="margin-top: 15px;">
+                <div class="sol"> Kesim:</div><p class="sag">@Model.FirstOrDefault(model => model.IsTp == "1").IsMatText</p>
+            </div>
+            <div class="col-lg-6 col-xs-12" style="margin-top: 15px;">
+                <div class="sol"> Fiyat:</div><p class="sag">@Model.FirstOrDefault(model => model.IsTp == "1").Lastprice</p>
+            </div>
+            <div class="col-lg-6 col-xs-12" style="margin-top: 15px;">
+                <div class="sol"> Son Satılamaz Kuru:</div><p class="sag">@Model.FirstOrDefault(model => model.IsTp == "1").Spricecurrency</p>
+            </div>
+            <div class="col-lg-6 col-xs-12" style="margin-top: 15px;">
+                <div class="sol"> Etiket:</div><p class="sag">@Model.FirstOrDefault(model => model.IsTp == "1").Mameti</p>
+            </div>
+            <div class="col-lg-6 col-xs-12" style="margin-top: 15px;">
+                <div class="sol"> Maliyet Kuru:</div><p class="sag">@Model.FirstOrDefault(model => model.IsTp == "1").Costcurrency</p>
+            </div>
+            <div class="col-lg-6 col-xs-12" style="margin-top: 15px;">
+                <div class="sol"> Bulunduğu Mağaza:</div><p class="sag">@Model.FirstOrDefault(model => model.IsTp == "1").IsWare</p>
+            </div>
+        </div>
+        <div class="row" style="margin-top:30px;">
+            <div class="col-lg-12 col-xs-12" style="text-align:center;">
+                <p style="font-size: 20px;">BENZER ÜRÜNLER</p>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 30px;">
+
+            @if (Model != null)
+            {
+                foreach (var item in Model.Where(model => model.IsTp == "0").ToList())
+                {
+                    <div class="col-lg-3 col-xs-6" style="margin-top: 30px;">
+                        <div class="col-lg-12">
+                            <img src="data:image/png;base64,@item.Picture.Replace("-----BEGIN CERTIFICATE-----", "" ).Replace("-----END CERTIFICATE-----", "" )" class="img-responsive shadow" alt="" />
+                        </div>
+                        <div class="col-lg-12 col-xs-12" style="margin-top: 15px; margin-bottom: 7px;">
+                            @*0.08 Karat Pırlanta Tektaş Yüzük*@
+                            @item.IsMatText  @item.IsTasDet @item.DetColor
+                        </div>
+                        <div class="col-lg-12 col-xs-12">
+                            <div class="sol1"> Taş:</div>
+                            <p class="sag1">  @item.IsMatText</p>
+                        </div>
+                        <div class="col-lg-12 col-xs-12">
+                            <div class="sol1"> Taş Özellikleri:</div>
+                            <p class="sag1">  @item.IsTasDet</p>
+                        </div>
+                        <div class="col-lg-12 col-xs-12">
+                            <div class="sol1"> Montür:</div>
+                            <p class="sag1">  @item.DetColor</p>
+                        </div>
+                        <div class="col-lg-12 col-xs-12">
+                            <div class="sol1"> Ağırlık:</div>
+                            <p class="sag1">  @item.QuantityX gr</p>
+                        </div>
+                        <div class="col-lg-12 col-xs-12">
+                            <div class="sol1"> Kesim:</div>
+                            <p class="sag1">@item.IsMatText</p>
+                        </div>
+                        <div class="col-lg-12 col-xs-12">
+                            <div class="sol1"> Fiyat:</div>
+                            <p class="sag1">@item.Lastprice</p>
+                        </div>
+                        <div class="col-lg-12 col-xs-12">
+                            <div class="sol1"> Son Satılamaz Kuru:</div>
+                            <p class="sag1">@item.Spricecurrency</p>
+                        </div>
+                        <div class="col-lg-12 col-xs-12">
+                            <div class="sol1"> Etiket:</div>
+                            <p class="sag1">@item.Mameti</p>
+                        </div>
+                        <div class="col-lg-12 col-xs-12">
+                            <div class="sol1"> Maliyet Kuru:</div>
+                            <p class="sag1">@item.Costcurrency</p>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+
+    <script src="~/assets/js/hover.js"></script>
+    <script src="~/assets/js/holder.min.js"></script>
+    <script src="~/assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="~/assets/js/bootstrap.min.js"></script>
+    <script>
+        window.onscroll = function () { myFunction() };
+
+        var navbar = document.getElementById("sabitmenu");
+        var sticky = navbar.offsetTop;
+
+        function myFunction() {
+            if (window.pageYOffset >= sticky) {
+                navbar.classList.add("sticky")
+            } else {
+                navbar.classList.remove("sticky");
+            }
+        }
+    </script>
+    <script>
+        $(document).ready(function () {
+            // -----------------------------------------------------------------------
+            $.each($('#navbar').find('li'), function () {
+                $(this).toggleClass('active',
+                    window.location.pathname.indexOf($(this).find('a').attr('href')) > -1);
+            });
+            // -----------------------------------------------------------------------
+        });
+    </script>
+    <script src="~/assets/js/up.js"></script>
+</body>
+</html>
